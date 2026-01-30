@@ -4,16 +4,16 @@ import Image from "next/image";
 import { useState } from "react";
 import SalesView from "./components/SalesView";
 import OverviewView from "./components/OverviewView";
-import OrdersView from "./components/OrdersView";
-import MenuView from "./components/MenuView";
+import SalaryView from "./components/SalaryView";
 import StaffView from "./components/StaffView";
 import SettingsView from "./components/SettingsView";
+import MembershipView from "./components/MembershipView";
 
 const SIDEBAR_ITEMS = [
   { id: "overview", label: "概览" },
   { id: "sales", label: "销售" },
-  { id: "orders", label: "订单" },
-  { id: "menu", label: "菜单" },
+  { id: "membership_info", label: "会员卡充值记录" },
+  { id: "employee_salary", label: "员工薪资信息" },
   { id: "staff", label: "员工" },
   { id: "settings", label: "设置" },
 ];
@@ -52,8 +52,8 @@ function Sidebar({ selected, onSelect }) {
 function Content({ selected }) {
   if (selected === "overview") return <OverviewView />
   if (selected === 'sales') return <SalesView />
-  if (selected === 'orders') return <OrdersView />
-  if (selected === 'menu') return <MenuView />
+  if (selected === 'membership_info') return <MembershipView />
+  if (selected === 'employee_salary') return <SalaryView />
   if (selected === 'staff') return <StaffView />
   if (selected === 'settings') return <SettingsView />
 
@@ -77,10 +77,6 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <h1 className="text-3xl font-semibold text-black dark:text-zinc-50">餐厅营业分析</h1>
               <p className="text-sm text-gray-500 dark:text-gray-400">当前视图：{SIDEBAR_ITEMS.find((s)=>s.id===selected)?.label}</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <button className="px-3 py-2 rounded-md border">导出</button>
-              <button className="px-3 py-2 rounded-md bg-foreground text-background">刷新</button>
             </div>
           </div>
 
